@@ -25,8 +25,6 @@ package org.dromara.surpass.web.access.contorller;
 import java.text.ParseException;
 import java.util.Set;
 
-import org.dromara.surpass.authn.jwt.service.AuthTokenService;
-import org.dromara.surpass.authn.session.SessionManager;
 import org.dromara.surpass.entity.Message;
 import org.dromara.surpass.entity.idm.UserInfo;
 import org.dromara.surpass.entity.permissions.Resources;
@@ -46,17 +44,6 @@ import jakarta.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping(value={"/api/func"})
 public class ApiFuncListController {
-
-	/**
-	 * 会话管理
-	 */
-	@Autowired
-	SessionManager sessionManager;
-	/**
-	 * 认证令牌服务
-	 */
-	@Autowired
-	AuthTokenService authTokenService ;
 
 	@Autowired
 	AuthzResourceService authzResourceService;
