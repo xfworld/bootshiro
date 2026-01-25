@@ -137,6 +137,13 @@ public class ApiExecuteServiceImpl  implements ApiExecuteService{
                         listValue.add(Integer.valueOf(v));
                     }
                     convertedParams.put(apiParam.getName(), listValue);
+                }else if(apiParam.getType().equalsIgnoreCase("Array[Float]")) {
+                    String [] stringArray = StringUtils.commaDelimitedListToStringArray(value.toString());
+                    List<Float> listValue =new ArrayList<>();
+                    for(String v : stringArray) {
+                        listValue.add(Float.valueOf(v));
+                    }
+                    convertedParams.put(apiParam.getName(), listValue);
                 }else if(apiParam.getType().equalsIgnoreCase("Array[String]")) {
                     String [] stringArray = StringUtils.commaDelimitedListToStringArray(value.toString());
                     List<String> listValue =new ArrayList<>();
@@ -144,6 +151,8 @@ public class ApiExecuteServiceImpl  implements ApiExecuteService{
                         listValue.add(v);
                     }
                     convertedParams.put(apiParam.getName(), listValue);
+                }else {
+                    convertedParams.put(apiParam.getName(), value);
                 }
             }
         }
