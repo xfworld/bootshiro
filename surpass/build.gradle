@@ -257,12 +257,16 @@ subprojects {
         implementation group: 'io.projectreactor', name: 'reactor-core', version: "${reactorcoreVersion}"
         implementation group: 'eu.tekul', name: 'szxcvbn_2.9.2', version: "${szxcvbnVersion}"
         //database
+        //jdbc
         implementation group: 'com.mysql', name: 'mysql-connector-j', version: "${mysqlconnectorjavaVersion}"
         implementation group: 'org.postgresql', name: 'postgresql', version: "${postgresqlVersion}"
+        implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: "${mariadbVersion}"
+        implementation group: 'com.ibm.db2', name: 'jcc', version: "${db2Version}"
+        implementation group: 'com.oracle.database.jdbc', name: 'ojdbc10', version: "${oracleVersion}"
+        implementation group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: "${sqlserverVersion}"
+        //database
         implementation group: 'com.alibaba', name: 'druid', version: "${druidVersion}"
         implementation group: 'com.alibaba', name: 'druid-spring-boot-starter', version: "${druidspringbootstarterVersion}"
-        implementation group: 'redis.clients', name: 'jedis', version: "${jedisVersion}"
-        implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: "${caffeineVersion}"
         //mybatis
         implementation group: 'org.mybatis', name: 'mybatis', version: "${mybatisVersion}"
         implementation group: 'org.mybatis', name: 'mybatis-spring', version: "${mybatisspringVersion}"
@@ -271,6 +275,9 @@ subprojects {
         implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: "${hibernateVersion}"
         implementation group: 'org.hibernate', name: 'hibernate-validator-cdi', version: "${hibernateVersion}"
         implementation group: 'org.hibernate.validator', name: 'hibernate-validator-annotation-processor', version: "${hibernateVersion}"
+        //cache
+        implementation group: 'redis.clients', name: 'jedis', version: "${jedisVersion}"
+        implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: "${caffeineVersion}"
         //jboss-logging for Hibernate Validator
         implementation group: 'org.jboss.logging', name: 'jboss-logging', version: "${jbossloggingVersion}"
         //usefull

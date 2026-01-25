@@ -25,6 +25,7 @@
               <img v-if="row.driverClassName === 'org.postgresql.Driver'" src="../../assets/db/postgresql.png" style="width: 48px;"/>
               <img v-if="row.driverClassName === 'oracle.jdbc.OracleDriver'" src="../../assets/db/oracle.png" style="width: 48px;"/>
               <img v-if="row.driverClassName === 'com.microsoft.sqlserver.jdbc.SQLServerDriver'" src="../../assets/db/ms_sql.png" style="width: 48px;"/>
+              <img v-if="row.driverClassName === 'com.ibm.db2.jcc.DB2Driver'" src="../../assets/db/IBM-DB2.png" style="width: 48px;"/>
             </template>
         </el-table-column>
         <el-table-column header-align="center" prop="name" label="名称"/>
@@ -82,6 +83,7 @@
             <el-option label="PostgreSQL" value="org.postgresql.Driver"/>
             <el-option label="Oracle" value="oracle.jdbc.OracleDriver"/>
             <el-option label="SQL Server" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <el-option label="DB2" value="com.ibm.db2.jcc.DB2Driver"/>
           </el-select>
         </el-form-item>
 
