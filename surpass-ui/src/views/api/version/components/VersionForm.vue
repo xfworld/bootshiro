@@ -66,14 +66,14 @@
           <div class="form-item-tip">限制每页最大记录数</div>
         </el-form-item>
         <el-form-item label="SQL模板" prop="sqlTemplate">
-          <code-mirror 
+          <code-mirror ref="sqlCodeEditor"
             :lang="sql()" 
             style="width:100%;height:60px;" 
             class="template-code"
             basic 
             wrap
             v-model="formData.sqlTemplate" 
-            @update:model-value="handleSqlTemplateChange($event)"
+            @update:model-value="handleSqlTemplateChange"
             placeholder="请输入SQL模板，支持命名参数如 #{name}"/>
           <el-input v-if="false"
               :model-value="formData.sqlTemplate"
@@ -242,7 +242,8 @@ const props = defineProps({
   submitting: {
     type: Boolean,
     default: false
-  }
+  },
+  codeMirrorCursor : 0
 })
 
 const emit = defineEmits([
@@ -256,9 +257,8 @@ const emit = defineEmits([
 ])
 
 const formRef = ref()
-
+const sqlCodeEditor = ref();
 const dialogTitle = computed(() => props.isEdit ? '编辑版本' : '新增版本')
-
 const drawerVisible = computed({
   get() {
     return props.visible
@@ -664,6 +664,10 @@ const updateParam = (index, field, value) => {
 
 const handleSqlTemplateChange = (value, viewUpdate) => {
   console.log("handleSqlTemplateChange"+value);
+  console.log("sqlCodeEditor getCursor "+sqlCodeEditor.value.getCursor())
+  //console.log("handleSqlTemplateChange "+value);
+  //console.log("viewUpdate.view.state "+value.view.state.value);
+  
   // 更新表单数据
   emit('update:formData', {...props.formData, sqlTemplate: value})
   // 同步SQL模板参数到参数定义列表
