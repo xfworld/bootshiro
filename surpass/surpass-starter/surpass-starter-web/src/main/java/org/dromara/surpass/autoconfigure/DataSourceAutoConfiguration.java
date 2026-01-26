@@ -37,13 +37,13 @@ public class DataSourceAutoConfiguration {
 
     @Bean
     @ConfigurationProperties("spring.datasource")
-    public DruidDataSource druidDataSource() {
+    DruidDataSource druidDataSource() {
         return DruidDataSourceBuilder.create().build();
     }
 
     @Primary
     @Bean(name="dataSource")
-    public DynamicRoutingDataSource dynamicRoutingDataSource(DruidDataSource druidDataSource) {
+    DynamicRoutingDataSource dynamicRoutingDataSource(DruidDataSource druidDataSource) {
         DynamicRoutingDataSource dynamicDataSource = new DynamicRoutingDataSource();
         // 创建多个测试数据源
         Map<Object, Object> targetDataSources = new HashMap<>();
@@ -52,7 +52,7 @@ public class DataSourceAutoConfiguration {
 
         dynamicDataSource.setTargetDataSources(targetDataSources);
         dynamicDataSource.setDefaultTargetDataSource(druidDataSource);
-
+        _logger.debug("init dynamicRoutingDataSource");
         return dynamicDataSource;
     }
 }

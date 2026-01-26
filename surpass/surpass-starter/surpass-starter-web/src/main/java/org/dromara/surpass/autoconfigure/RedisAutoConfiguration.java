@@ -28,13 +28,10 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
-import redis.clients.jedis.JedisPoolConfig;
-
 @AutoConfiguration
 @ConfigurationProperties(prefix = "spring.redis")
 public class RedisAutoConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(RedisAutoConfiguration.class);
-    private JedisPoolConfig poolConfig;
 
     /**
      * RedisConnectionFactory.

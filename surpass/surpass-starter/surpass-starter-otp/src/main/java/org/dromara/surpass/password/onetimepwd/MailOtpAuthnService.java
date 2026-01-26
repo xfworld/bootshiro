@@ -29,7 +29,6 @@ import com.github.benmanes.caffeine.cache.Caffeine;
 
 import org.dromara.mybatis.jpa.query.LambdaQuery;
 import org.dromara.mybatis.jpa.query.OrderBy;
-import org.dromara.mybatis.jpa.query.OrderType;
 import org.dromara.surpass.configuration.EmailConfig;
 import org.dromara.surpass.constants.ConstsBoolean;
 import org.dromara.surpass.constants.ConstsConfig;

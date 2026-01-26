@@ -22,7 +22,6 @@
 
 package org.dromara.surpass.password.onetimepwd.token;
 
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.dromara.surpass.entity.idm.UserInfo;
