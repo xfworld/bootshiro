@@ -172,7 +172,7 @@
               placeholder="请输入响应模板，支持 #{data} 占位符代表结果数据"
               @update:model-value="$emit('update:formData', { ...props.formData, responseTemplate: $event })"
           />
-          <code-mirror :lang="json()"  style="width:100%;height:60px;" class="template-code" basic  v-model="formData.responseTemplate" placeholder="请输入响应模板，支持 #{data} 占位符代表结果数据"/>
+          <code-mirror :lang="json()"  style="width:100%;min-height:60px;" class="template-code" basic  v-model="formData.responseTemplate" placeholder="请输入响应模板，支持 #{data} 占位符代表结果数据"/>
           <div class="template-tips">
             <p><strong>模板提示：</strong></p>
             <p>• 使用 <code>#{data}</code> 占位符代表查询结果数据（必须包含）</p>
