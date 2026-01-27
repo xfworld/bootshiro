@@ -123,7 +123,7 @@
             <el-table-column type="selection" width="55" align="center" fixed="left"/>
             <el-table-column prop="name" label="资源名称" min-width="180"></el-table-column>
             <el-table-column prop="path" label="请求地址" min-width="200" show-overflow-tooltip/>
-            <el-table-column prop="classify" label="资源类型" width="120">
+            <el-table-column prop="classify" label="类型" width="120">
               <template #default="{ row }">
                 <dict-tag :options="resources_type" :value="row.classify"/>
               </template>
@@ -152,14 +152,20 @@
                 </el-tag>
               </template>
             </el-table-column>
-            <el-table-column label="操作" width="120" fixed="right">
+            <el-table-column label="API管理" width="80" align="center">
               <template #default="{ row }">
                 <div class="action-buttons">
-                  <el-tooltip content="版本管理" placement="top" v-if="row.classify === 'openApi'">
-                    <el-button size="small" link @click="viewVersions(row)">
-                      <svg-icon icon-class="delivered-procedure"/>
+                  <el-tooltip content="管理" placement="top" v-if="row.classify === 'openApi'">
+                    <el-button size="small" type="primary" link @click="viewVersions(row)">
+                      <svg-icon icon-class="up-square"/>
                     </el-button>
                   </el-tooltip>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="操作" width="100" align="center">
+              <template #default="{ row }">
+                <div class="action-buttons">
                   <el-tooltip content="编辑" placement="top">
                     <el-button size="small" link type="primary" @click="editApi(row)">
                       <svg-icon icon-class="edit"/>
@@ -326,7 +332,7 @@
             </el-form-item>
 
             <el-form-item
-                v-if="formData.classify === 'api' || formData.classify === 'openApi'"
+                v-if="formData.classify === 'api' || formData.classify === 'menu'"
                 label="请求参数"
             >
               <el-input v-model="formData.params" placeholder="请输入请求参数"/>

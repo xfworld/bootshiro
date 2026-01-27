@@ -63,13 +63,17 @@
             <span v-if="scope.row.status === 0"><el-icon color="#808080"><CircleCloseFilled/></el-icon></span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('jbx.text.action')" align="center" width="200" fixed="right">
+        <el-table-column label="资源" align="center" width="80" fixed="right">
+          <template #default="scope">
+            <el-tooltip content="管理">
+              <el-button link icon="Folder" type="primary" @click="handleApiBinding(scope.row)"></el-button>
+            </el-tooltip>
+          </template>
+        </el-table-column>
+        <el-table-column :label="$t('jbx.text.action')" align="center" width="100" fixed="right">
           <template #default="scope">
             <el-tooltip content="编辑">
               <el-button link icon="Edit" @click="handleUpdate(scope.row)"></el-button>
-            </el-tooltip>
-            <el-tooltip content="资源授权">
-              <el-button link icon="Connection" type="primary" @click="handleApiBinding(scope.row)"></el-button>
             </el-tooltip>
             <el-tooltip content="移除">
               <el-button link icon="Delete" type="danger" @click="handleDelete(scope.row)"></el-button>
