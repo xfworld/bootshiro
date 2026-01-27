@@ -505,15 +505,31 @@ const validateResponseTemplate = (rule, value, callback) => {
 // 解析SQL模板中的参数
 const parseSqlParameters = (sqlTemplate) => {
   if (!sqlTemplate) return [];
-
-  // 使用正则表达式匹配 #{参数名} 格式的参数
-  const regex = /[#,$]\{([^}]+)\}/g;
   const matches = [];
   let match;
-
+  // 使用正则表达式匹配 #{参数名} 格式的参数
+  const regex = /[#,$]\{([^}]+)\}/g;
   while ((match = regex.exec(sqlTemplate)) !== null) {
     // 获取参数名（去掉空格）
     const paramName = match[1].trim();
+
+    // 检查是否已存在相同参数名
+    if (!matches.some(param => param.name === paramName)) {
+      matches.push({
+        name: paramName,
+        type: 'String', // 默认类型
+        rules: {},
+        description: '',
+        readOnly: false
+      });
+    }
+  }
+
+  const regexCollection =/collection=\"([^"]+)\"/g;// /collection="\([^]+)\"/g;
+  while ((match = regexCollection.exec(sqlTemplate)) !== null) {
+    // 获取参数名（去掉空格）
+    const paramName = match[1].trim();
+    console.log("paramName "+paramName);
 
     // 检查是否已存在相同参数名
     if (!matches.some(param => param.name === paramName)) {
@@ -674,9 +690,6 @@ const updateParam = (index, field, value) => {
 
 const handleSqlTemplateChange = (value, viewUpdate) => {
   console.log("handleSqlTemplateChange"+value);
-  console.log("sqlCodeEditor getCursor "+sqlCodeEditor.value.getCursor())
-  //console.log("handleSqlTemplateChange "+value);
-  //console.log("viewUpdate.view.state "+value.view.state.value);
   
   // 更新表单数据
   emit('update:formData', {...props.formData, sqlTemplate: value})
